@@ -150,12 +150,16 @@ public class TrainSystemMain {
             }
         });
 
+        JButton closeButton = new JButton("Close");
+        closeButton.addActionListener(e -> stationFrame.dispose());
+        
         // Panel for input and buttons
         JPanel inputPanel = new JPanel();
         inputPanel.add(new JLabel("Station Name: "));
         inputPanel.add(stationField);
         inputPanel.add(addButton);
         inputPanel.add(removeButton);
+        inputPanel.add(closeButton);
 
         // Add components to the frame
         stationFrame.add(scrollPane, BorderLayout.CENTER);
@@ -210,10 +214,14 @@ public class TrainSystemMain {
     	        }
     	    });
 
-    	    // Panel for buttons
+    	    JButton closeButton = new JButton("Close");
+            closeButton.addActionListener(e -> trackFrame.dispose());
+    	    
+    	    // Panel for buttons (Group small buttons to modify easily
     	    JPanel buttonPanel = new JPanel();
     	    buttonPanel.add(addTrackButton);
     	    buttonPanel.add(removeTrackButton);
+    	    buttonPanel.add(closeButton);
 
     	    // Add components to the frame
     	    trackFrame.add(new JScrollPane(stationList), BorderLayout.WEST);
@@ -320,7 +328,7 @@ public class TrainSystemMain {
             }
         });
 
-        // Panel for input and buttons
+        // Panel for input and buttons (Group small buttons)
         JPanel inputPanel = new JPanel();
         inputPanel.add(new JLabel("Train Name: "));
         inputPanel.add(trainField);
