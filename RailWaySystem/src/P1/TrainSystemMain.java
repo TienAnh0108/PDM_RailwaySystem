@@ -39,6 +39,7 @@ public class TrainSystemMain {
         JButton trackButton = new JButton("Manage Tracks");
         JButton trainButton = new JButton("Manage Trains");
         JButton scheduleButton = new JButton("Manage Schedules");
+        JButton sequenceButton = new JButton("Manage Sequences");
         JButton exitButton = new JButton("Exit");
 
         // Add buttons to the menu panel
@@ -46,6 +47,7 @@ public class TrainSystemMain {
         menuPanel.add(trackButton);
         menuPanel.add(trainButton);
         menuPanel.add(scheduleButton);
+        menuPanel.add(sequenceButton);
         menuPanel.add(exitButton);
 
         // Add the menu panel to the frame
@@ -78,6 +80,13 @@ public class TrainSystemMain {
             public void actionPerformed(ActionEvent e) {
                 manageSchedules();
             }
+        });
+        
+        sequenceButton.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		manageSequences();
+        	}
         });
 
         exitButton.addActionListener(new ActionListener() {
@@ -360,5 +369,15 @@ public class TrainSystemMain {
         scheduleFrame.add(bottomPanel, BorderLayout.SOUTH);
 
         scheduleFrame.setVisible(true);
+    }
+    
+    private static void manageSequences() {
+    	JFrame sequencesFrame = new JFrame("Manage Sequences");
+    	sequencesFrame.setSize(600, 400);
+    	
+    	String[] columnNames = {"SequenceNum", "StationID", "ScheduleID", "RouteID", "Arrival TIme", "Departure Time"};
+    	DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+    	JTable sequencesTable = new JTable(tableModel); 	// Create table object for sequences
+    	JScrollPane scrollPane = new JScrollPane(sequencesTable);
     }
 }
